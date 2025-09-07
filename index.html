@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>METAROBO FIGHT CLUB - Lite Mode</title>
+  <link 
+  rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"integrity="sha512-pV7kVd8lEyE3u7x2kjz6+BfCj4/jT+3JzCkEQP0I5hV3FZ0XUP+9YJc5Eq/6nqZ6pS4t5hqYhNIlfXsy8+RMg=="crossorigin="anonymous"referrerpolicy="no-referrer"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+      
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      background: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(45deg, #00ffff, #0088ff);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+    }
+
+    .logo i {
+      font-size: 24px;
+      color: #0a0a0a;
+    }
+
+    .logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8em;
+      color: #ffffff;
+      text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #00ffff;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    }
+
+    
+    main {
+      margin-top: 100px;
+    }
+
+      
+    section {
+      padding: 80px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8rem;
+      color: #00ffff;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+      margin-bottom: 20px;
+      animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+      0% { text-shadow: 0 0 10px rgba(0, 255, 255, 0.7); }
+      100% { text-shadow: 0 0 20px rgba(0, 255, 255, 1), 0 0 30px rgba(0, 150, 255, 0.7); }
+    }
+
+    .section-description {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #ffffff;
+    }
+
+      
+    .mint-your-fighter {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    }
+
+    .mint-fighter-container {
+      max-width: 600px;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    .mint-card {
+      position: relative;
+      width: 100%;
+      height: 350px;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    }
+
+    .mint-card:hover {
+      transform: rotateY(10deg) rotateX(5deg) scale(1.02);
+    }
+
+    .mint-card-front {
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(26, 26, 46, 0.9) 100%);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 15px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+    }
+
+    .card-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: #00ffff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    }
+
+    .card-description {
+      color: #ffffff;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    
+    .btn-mint {
+      display: inline-block;
+      padding: 15px 40px;
+      background: linear-gradient(45deg, #00ffff 0%, #0088ff 100%);
+      color: #111;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-mint:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+    }
+
+      
+    .mint-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%);
+    }
+
+    .fighter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px auto;
+      max-width: 1200px;
+    }
+
+    .fighter-card {
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(26, 26, 46, 0.9) 100%);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .fighter-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
+    }
+
+    .fighter-image-container {
+      height: 300px;
+      overflow: hidden;
+      background: linear-gradient(45deg, #0a0a0a, #1a1a2e);
+      display: flex;
+      align-items: center;
+      justify-content:center;
+    }
+
+    .fighter-image {
+      height: 330px;
+      width: 390px;
+      font-size: 20px;
+      color: #00ffff;
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+    }
+
+    .fighter-info {
+      padding: 20px;
+    }
+
+    .fighter-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffff;
+      margin: 0 0 15px 0;
+      font-size: 1.5rem;
+      text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    }
+
+    .fighter-card p {
+      color: #ffffff;
+      margin-bottom: 20px;
+      line-height: 1.5;
+      min-height: 100px;
+    }
+
+    
+    .community-section {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+    }
+
+      
+    .tournament-section {
+      background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%);
+    }
+
+    .tournament-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .tournament-card {
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 15px;
+      padding: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .tournament-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    }
+
+    .tournament-card h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffff;
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+
+    .tournament-card p {
+      color: #ffffff;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .tournament-prize {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: gold;
+      margin: 20px 0;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    }
+
+    .eth-price {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+
+    .tournament-countdown {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: #ff5555;
+      margin: 20px 0;
+    }
+
+      
+    .main-footer {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+      color: white;
+      padding: 50px 5% 20px;
+      border-top: 1px solid #00ffff;
+      box-shadow: 0 -5px 20px rgba(0, 255, 255, 0.1);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo i {
+      font-size: 40px;
+      color: #00ffff;
+      margin-right: 15px;
+    }
+
+    .footer-logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5em;
+      color: #00ffff;
+      text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    }
+
+    .footer-about p {
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 极 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      background: #00ffff;
+      color: #111;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+    }
+
+    .footer-links h3 {
+      color: #00ffff;
+      margin-bottom: 20px;
+      font-family: 'Orbitron', sans-serif;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-links h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background: #00ffff;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    i.fab {
+      color: #1DA1F2;
+      font-size: 24px;
+
+    }
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-links a:hover {
+      color: #00ffff;
+      padding-left: 5px;
+    }
+
+    .footer-links a i {
+      margin-right: 10px;
+    }
+
+    .footer-stats {
+      background: rgba(0, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+    }
+
+    .footer-stats h3 {
+      color: #00ffff;
+      margin-bottom: 20px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .stat-item {
+      margin-bottom: 15px;
+    }
+
+    .stat-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-size: 0.9em;
+    }
+
+    .stat-bar {
+      height: 5px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .stat-progress {
+      height: 100%;
+      background: #00ffff;
+      border-radius: 5px;
+    }
+
+    .counter {
+      font-size: 2em;
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffff;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .footer-newsletter input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      border-radius: 5px;
+    }
+
+    .footer-newsletter button {
+      width: 100%;
+      padding: 12px;
+      background:linear-gradient(90deg, #00ffe0, #00aaff) ;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition:  0.3s ease;
+      cursor: not-allowed;
+      box-shadow: 0 0 10px #00ffe0, 0 0 20px #00aaf;
+
+    }
+    
+    .footer-newsletter-button: disabled {
+      opacity: 0.6;
+
+    }
+
+    .footer-newsletter button:hover {
+      background: #00b3b3;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9em;
+    }
+
+      
+    @media (max-width: 768px) {
+      .main-header {
+        flex-direction: column;
+        padding: 15px;
+      }
+
+      .logo-container {
+        margin-bottom: 15px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .fighter-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tournament-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <header class="main-header">
+    <div class="logo-container">
+      <div class="logo">
+        <i class="fas fa-robot"></i>
+      </div>
+      <h1 class="logo-text">METAROBO FIGHT CLUB</h1>
+    </div>
+    <nav class="nav-links">
+      <a href="pages/tier nav/elite.html">Mint</a>
+      <a href="fighter-pagination/0.1.html">Fighters</a>
+      <a href="pages/roadmap.html">Roadmap</a>
+      <a href="pages/team.html">Team</a>
+      <a href="pages/buy.nft/buy_nfts.html">Marketplace</a>
+    </nav>
+  </header>
+
+    
+  <main>
+      
+    <section class="mint-your-fighter">
+      <h2 class="section-title">Mint Your Fighter</h2>
+      <p class="section-description">Choose your champion and join the MetaRobo arena! Unlock your fighter now and be part of the MetaRobo Fight Club's legacy. Every mint is a step toward ultimate dominance!</p>
+      <div class="mint-fighter-container">
+        <div class="mint-card">
+          <div class="mint-card-front">
+            <h3 class="card-title">Unlock Your Fighter Now</h3>
+            <p class="card-description">Choose your fighter and watch them enter the ring. It's time to mint your warrior and take control of the fight.</p>
+            <a href="pages/tier nav/elite.html" class="btn-mint">Mint Your Fighter</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="mint-section" id="fighters">
+      <h2 class="section-title">MetaRobo Fighters Available for Mint</h2>
+      <p class="section-subtitle">Choose your warrior and claim your spot in the arena.</p>
+
+      <div class="fighter-grid">
+        <div class="fighter-card">
+          <div class="fighter-image-container">
+            <div class="fighter-image">
+              <img src="assets/images/myc/CRIMON.LOTOTUS STRIKER RX-8.jpeg" alt="CRL-R8" class="fighter-image">
+            </div>
+          </div>
+          <div class="fighter-info">
+            <h3>CRIMON LOTOTUS STRIKER</h3>
+            <p>
+              Crimon Lototus Striker stands ready to rush. A fighter forged in the heart of battle, crushing enemies with a strike that'll rattle.
+              With speed and strength, this warrior will reign.
+            </p>
+            <a href="pages/tier nav/mythic_nav.html" class="btn-mint">Mint Now</a>
+          </div>
+        </div>
+
+        <div class="fighter-card">
+          <div class="fighter-image-container">
+            <div class="fighter-image">
+               <img src="assets/images/ldg/DRAGO.CLAW.JPG.jpeg" alt="DRW-CLW" class="fighter-image">
+            </div>
+          </div>
+          <div class="fighter-info">
+            <h3>DRAGO CLAW</h3>
+            <p>
+              Birthed from the volcanic depths of the Neo Core, Drago Claw is a cyber-dragon of plasma fury. With dark matter talons and war-hardened instincts,
+              he scorches the arena.
+            </p>
+            <a href="pages/tier nav/legendary_nav.html" class="btn-mint">Mint Now</a>
+          </div>
+        </div>
+
+        <div class="fighter-card">
+          <div class="fighter-image-container">
+            <div class="fighter-image">
+               <img src="assets/images/myc/FLYROBO.VI.JPG.jpeg" alt="FLY-RB-VI" class="fighter-image">
+            </div>
+          </div>
+          <div class="fighter-info">
+            <h3>FLYROBO VI</h3>
+            <p>
+              Built in Aerotron Prime, FlyRobo VI dominates from above with jetstream wings and plasma thrusters. His aerial strikes are lightning-fast—challengers beware!
+            </p>
+            <a href="pages/tier nav/mythic_nav.html" class="btn-mint">Mint Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      
+    <section class="community-section">
+      <div class="community-content">
+        <h2 class="section-title">Join Our Growing Community</h2>
+        <p class="section-description">Become part of the most passionate fighting community in the metaverse. Train, battle, and earn together with fighters from around the world.</p>
+        
+        <a href="https://discord.gg/AUdC98dwPN" class="btn-mint">
+          Join Discord Community
+        </a>
+      </div>
+    </section>
+
+    
+    <section class="tournament-section">
+      <div class="tournament-container">
+        <h2 class="section-title">Upcoming Tournaments</h2>
+        <p class="section-description">Test your skills against the best fighters in the MetaRobo arena. Massive prizes await the champions!</p>
+        
+        <div class="tournament-grid">
+          <div class="tournament-card">
+            <h3>METAROBO WORLD CHAMPIONSHIP</h3>
+            <p>The ultimate test of skill and strategy. Fighters from all regions compete for the title of World Champion and a massive prize pool.</p>
+            <div class="tournament-prize">$50,000 PRIZE POOL</div>
+            <div class="eth-price">≈ 25.4 ETH</div>
+            <div class="tournament-countdown">COMING SOON</div>
+            <a href="https://discord.gg/AUdC98dwPN" class="btn-mint">Register Interest</a>
+          </div>
+          
+          <div class="tournament-card">
+            <h3>ROOKIE RUMBLE</h3>
+            <p>New to the MetaRobo Fight Club? This is your chance to prove yourself against other newcomers and win exclusive rewards.</p>
+            <div class="tournament-prize">$25,000 PRIZE POOL</div>
+            <div class="eth-price">≈ 12.7 ETH</div>
+            <div class="tournament-countdown">COMING SOON</div>
+            <a href="https://discord.gg/AUdC98dwPN" class="btn-mint">Join Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <div class="footer-logo">
+          <i class="fas fa-robot"></i>
+          <span class="footer-logo-text">METAROBO FIGHT CLUB</span>
+        </div>
+        <p>The ultimate NFT fighting experience where robotic warriors battle for supremacy in the metaverse. Join the Metarobo Fight Club and mint your champion today!</p>
+        <div class="footer-social">
+          <a href="https://x.com/metarobofc?s=21" target="_blank"> <img src="assets/images/team/twitter.JPG" alt="T" style=" width: 30px; height: 30px;">
+          <a href="https://discord.gg/AUdC98dwPN" target="_blank"> <img src="assets/images/team/discord.JPG" alt="D" style=" width: 30px; height: 30px;">
+          <a href="https://t.me/Metarobofightclubco" target="_blank"> <img src="assets/images/team/telegram.JPG" alt="T" style=" width: 30px; height: 30px;">
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="pages/tier nav/elite.html"><i class="fas fa-robot"></i> Mint Fighter</a></li>
+          <li><a href="fighter-pagination/0.1.html"><i class="fas fa-fist-raised"></i> Fighters</a></li>
+          <li><a href="pages/roadmap.html"><i class="fas fa-map-marked-alt"></i> Roadmap</a></li>
+          <li><a href="pages/team.html"><i class="fas fa-users"></i> Team</a></li>
+          <li><a href="pages/buy.nft/buy_nfts.html"><i class="fas fa-shopping-cart"></i> Marketplace</a></li>
+        </ul>
+      </div>
+      
+      
+      
+      <div class="footer-stats">
+        <h3>Fight Club Stats</h3>
+        <div class="counter">12,354</div>
+        
+        <div class="stat-item">
+          <div class="stat-label">
+            <span>Fighters Minted</span>
+            <span>00%</span>
+          </div>
+          <div class="stat-bar">
+            <div class="stat-progress" style="width: 00%"></div>
+          </div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-label">
+            <span>Battles Fought</span>
+            <span>00%</span>
+          </div>
+          <div class="stat-bar">
+            <div class="stat-progress" style="width: 00%"></div>
+          </div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-label">
+            <span>Community Growth</span>
+            <span>20%</span>
+          </div>
+          <div class="stat-bar">
+            <div class="stat-progress" style="width: 20%"></div>
+          </div>
+        </div>
+        
+        <div class="footer-newsletter">
+          <h3>Join Our Newsletter</h3>
+          <input type="email" placeholder="Your Email Address">
+          <button type="button" disabled">Subscribe</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 METAROBO FIGHT CLUB. All rights reserved. | Powered by Blockchain Technology</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        
+      const counter = document.querySelector('.counter');
+      let current = 0;
+      const target = 12354;
+      const duration = 3000;
+      const increment = target / (duration / 16);
+      
+      const updateCounter = () => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          counter.textContent = Math.floor(current).toLocaleString();
+        } else {
+          counter.textContent = Math.floor(current).toLocaleString();
+          requestAnimationFrame(updateCounter);
+        }
+      };
+      
+        
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            updateCounter();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      observer.observe(counter);
+      
+        
+      const countdownElement = document.querySelector('.tournament-countdown');
+      const eventDate = new Date();
+      eventDate.setDate(eventDate.getDate() + 15);
+      
+      const updateCountdown = () => {
+        const now = new Date();
+        const diff = eventDate - now;
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        
+        countdownElement.textContent = `COMING SOON`;
+      };
+      
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+    });
+  </script>
+</body>
+</html>
+
+

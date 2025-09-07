@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap | MetaRobo Fight Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-cyan: #00ffe7;
+            --neon-purple: #bc13fe;
+            --neon-pink: #ff2a6d;
+            --neon-yellow: #f5d300;
+            --neon-gold: #ffd700;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --card-bg: rgba(15, 15, 15, 0.8);
+            --glow-cyan: 0 0 15px var(--neon-cyan);
+            --glow-purple: 0 0 15px var(--neon-purple);
+            --glow-pink: 0 0 15px var(--neon-pink);
+            --glow-yellow: 0 0 15px var(--neon-yellow);
+            --glow-gold: 0 0 15px var(--neon-gold);
+            --text-glow: 0 0 8px rgba(245, 211, 0, 0.7);
+            --cyber-red: #ff003c;
+            --cyber-blue: #00f0ff;
+            --elite-color: #00f0ff;
+            --mythic-color: #bc13fe;
+            --legendary-color: #ffd700;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        
+        .cyber-header {
+            background: linear-gradient(135deg, #0f0f15 0%, #1a1a2e 100%);
+            padding: 1.5rem 0;
+            border-bottom: 3px solid var(--cyber-red);
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.3);
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-left: 60px;
+        }
+
+        .logo {
+            width: 60px;
+            height: auto;
+            filter: drop-shadow(0 0 10px var(--cyber-blue));
+        }
+
+        .header-title {
+            font-size: 2rem;
+            background: linear-gradient(90deg, var(--cyber-blue), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .header-subtitle {
+            font-size: 0.9rem;
+            color: var(--cyber-red);
+            letter-spacing: 3px;
+            margin-top: 0.3rem;
+            text-shadow: 0 0 10px var(--cyber-red);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--cyber-blue);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cyber-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        
+        .matrix-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+            animation: matrixMove 100s linear infinite;
+        }
+
+        @keyframes matrixMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            border: 2px solid var(--cyber-red);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--cyber-red);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 100;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 0, 60, 0.4),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .back-button:hover {
+            background: var(--cyber-red);
+            color: black;
+            box-shadow: 0 0 15px var(--cyber-red),
+                        0 0 30px rgba(255, 0, 60, 0.5);
+            transform: scale(1.05);
+        }
+
+        .back-button:hover::before {
+            left: 100%;
+        }
+
+        .back-button i {
+            margin-right: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover i {
+            transform: translateX(-3px);
+        }
+
+        
+        .roadmap-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .page-title {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--cyber-blue), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: var(--cyber-red);
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        
+        .roadmap-timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .roadmap-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--cyber-red), var(--cyber-blue));
+        }
+
+        .roadmap-phase {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 100%;
+        }
+
+        .phase-content {
+            position: relative;
+            width: 45%;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .phase-left {
+            left: 0;
+        }
+
+        .phase-right {
+            left: 55%;
+        }
+
+        .phase-marker {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: var(--cyber-blue);
+            border: 3px solid var(--dark-bg);
+            border-radius: 50%;
+            top: 2rem;
+            right: -12px;
+            z-index: 2;
+        }
+
+        .phase-right .phase-marker {
+            left: -12px;
+            right: auto;
+        }
+
+        .phase-title {
+            font-size: 1.5rem;
+            color: var(--cyber-blue);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--cyber-blue);
+            padding-bottom: 0.5rem;
+        }
+
+        .phase-date {
+            color: var(--cyber-red);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .phase-description {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .phase-features {
+            list-style-type: none;
+        }
+
+        .phase-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #aaa;
+        }
+
+        .phase-features li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--cyber-blue);
+            font-size: 0.8rem;
+        }
+
+        
+        .status-section {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            text-align: center;
+        }
+
+        .status-title {
+            font-size: 1.8rem;
+            color: var(--cyber-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .status-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .status-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .status-value {
+            font-size: 2.5rem;
+            color: var(--cyber-red);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-label {
+            color: var(--cyber-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+            
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .security-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            margin: 0 10px;
+            border: 1px solid var(--cyber-blue);
+            border-radius: 20px;
+            color: var(--cyber-blue);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-bottom {
+            margin-top: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: var(--cyber-blue);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--neon-cyan);
+            transform: translateY(-3px);
+        }
+
+            
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .header-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .logo-container {
+                margin-left: 0;
+            }
+            
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                margin-bottom: 1rem;
+            }
+            
+            .roadmap-timeline::before {
+                left: 20px;
+            }
+            
+            .phase-content {
+                width: calc(100% - 60px);
+                margin-left: 40px;
+            }
+            
+            .phase-left, .phase-right {
+                left: 0;
+            }
+            
+            .phase-marker {
+                left: -36px;
+                right: auto;
+            }
+            
+            .status-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> BACK
+    </a>
+    
+    <div class="matrix-overlay"></div>
+    
+        
+    <header class="cyber-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="../assets/images/METAROBOFC.LOGO.jpeg" alt="MetaRobo Logo" class="logo">
+                <div>
+                    <div class="header-title">METAROBO FIGHT CLUB</div>
+                    <div class="header-subtitle">STRATEGIC ROADMAP</div>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="../header_nav/arena.html" class="nav-link">ARENA</a>
+                <a href="../header_nav/rarities.html" class="nav-link">RAITIES</a>
+                <a href="../fighter-pagination/0.1.html" class="nav-link">MECHA FIGHTER VAULT</a>
+                </nav>
+        </div>
+    </header>
+
+    <div class="roadmap-container">
+        <h1 class="page-title">PROJECT ROADMAP</h1>
+        <p class="page-subtitle">THE FUTURE OF MECHA COMBAT</p>
+        
+        <div class="roadmap-timeline">
+            
+            <div class="roadmap-phase">
+                <div class="phase-content phase-left">
+                    <div class="phase-marker"></div>
+                    <h2 class="phase-title">PHASE 1: FOUNDATION</h2>
+                    <div class="phase-date">Q4 2024 - Q1 2025</div>
+                    <p class="phase-description">
+                        Establishing the core infrastructure and initial NFT collection to build our community foundation.
+                    </p>
+                    <ul class="phase-features">
+                        <li>Initial NFT minting (Elite, Mythic, Legendary series)</li>
+                        <li>Smart contract deployment and auditing</li>
+                        <li>Community building and Discord launch</li>
+                        <li>Marketplace integration for secondary trading</li>
+                        <li>Genesis fighter airdrop to early supporters</li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            <div class="roadmap-phase">
+                <div class="phase-content phase-right">
+                    <div class="phase-marker"></div>
+                    <h2 class="phase-title">PHASE 2: EXPANSION</h2>
+                    <div class="phase-date">Q2 2025 - Q3 2025</div>
+                    <p class="phase-description">
+                        Expanding the ecosystem with enhanced gameplay features and additional utility for NFT holders.
+                    </p>
+                    <ul class="phase-features">
+                        <li>Beta launch of the combat arena with PvP mechanics</li>
+                        <li>Introduction of crafting system for weapon upgrades</li>
+                        <li>Staking mechanism for passive income generation</li>
+                        <li>Limited edition collaboration fighters</li>
+                        <li>Tournament system with prize pools</li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            <div class="roadmap-phase">
+                <div class="phase-content phase-left">
+                    <div class="phase-marker"></div>
+                    <h2 class="phase-title">PHASE 3: EVOLUTION</h2>
+                    <div class="phase-date">Q4 2025 - Q1 2026</div>
+                    <p class="phase-description">
+                        Implementing advanced features and cross-platform integration to evolve the MetaRobo ecosystem.
+                    </p>
+                    <ul class="phase-features">
+                        <li>Full 3D combat arena with immersive visuals</li>
+                        <li>VR compatibility for enhanced gameplay experience</li>
+                        <li>Cross-chain expansion to other blockchain networks</li>
+                        <li>DAO implementation for community governance</li>
+                        <li>Physical merchandise collection launch</li>
+                    </ul>
+                </div>
+            </div>
+            
+                
+            <div class="roadmap-phase">
+                <div class="phase-content phase-right">
+                    <div class="phase-marker"></div>
+                    <h2 class="phase-title">PHASE 4: DOMINANCE</h2>
+                    <div class="phase-date">Q2 2026 - BEYOND</div>
+                    <p class="phase-description">
+                        Establishing MetaRobo as the premier mecha combat platform with mainstream integration.
+                    </p>
+                    <ul class="phase-features">
+                        <li>Mobile app release for iOS and Android</li>
+                        <li>Esports league, UFC Partnerships with professional teams</li>
+                        <li>Animated series featuring top fighters</li>
+                        <li>Physical collectibles with digital twins</li>
+                        <li>Metaverse integration and virtual land ownership</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-section">
+            <h2 class="status-title">CURRENT PROJECT STATUS</h2>
+            <div class="status-content">
+                <div class="status-item">
+                    <div class="status-value">75%</div>
+                    <div class="status-label">Pending Complete</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value">---</div>
+                    <div class="status-label">NFTs Minted</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value">COMING SOON</div>
+                    <div class="status-label">Next Major Update</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <span class="security-badge">256-BIT QUANTUM ENCRYPTION</span>
+            <span class="security-badge">ETHEREUM BLOCKCHAIN VERIFIED</span>
+        </div>
+        <div class="social-links">
+            <a href="https://x.com/metarobofc?s=21"><i class="fab fa-twitter"></i></a>
+            <a href="https://discord.gg/FwUFGDYM"><i class="fab fa-discord"></i></a>
+            <a href="https://coinmarketcap.com/currencies/ethereum/"><i class="fab fa-ethereum"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 MetaRobo Fight Club. All rights reserved.</p>
+            <p>All transactions secured by ROBO Network</p>
+        </div>
+    </footer>
+</body>
+</html>

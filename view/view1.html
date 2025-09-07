@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon | MetaRobo Fight Club</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-cyan: #00ffe7;
+            --neon-purple: #bc13fe;
+            --neon-pink: #ff2a6d;
+            --neon-yellow: #f5d300;
+            --neon-gold: #ffd700;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --card-bg: rgba(15, 15, 15, 0.8);
+            --glow-cyan: 0 0 15px var(--neon-cyan);
+            --glow-purple: 0 0 15px var(--neon-purple);
+            --glow-pink: 0 0 15px var(--neon-pink);
+            --glow-yellow: 0 0 15px var(--neon-yellow);
+            --glow-gold: 0 0 15px var(--neon-gold);
+            --text-glow: 0 0 8px rgba(245, 211, 0, 0.7);
+            --cyber-red: #ff003c;
+            --cyber-blue: #00f0ff;
+            --elite-color: #00f0ff;
+            --mythic-color: #bc13fe;
+            --legendary-color: #ffd700;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        
+        .matrix-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+            animation: matrixMove 100s linear infinite;
+        }
+
+        @keyframes matrixMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+
+        
+        .coming-soon-container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            padding: 2rem;
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+        }
+
+            
+        .logo-container {
+            margin-bottom: 3rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .logo {
+            width: 120px;
+            height: auto;
+            filter: drop-shadow(0 0 15px var(--cyber-blue));
+        }
+
+        
+        .main-text {
+            font-size: 6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        .coming {
+            background: linear-gradient(90deg, var(--cyber-red), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px var(--cyber-red);
+            animation: textGlowRed 2s ease-in-out infinite alternate;
+        }
+
+        .soon {
+            background: linear-gradient(90deg, var(--cyber-blue), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px var(--cyber-blue);
+            animation: textGlowBlue 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlowRed {
+            0% { text-shadow: 0 0 20px var(--cyber-red); }
+            100% { text-shadow: 0 0 40px var(--cyber-red), 0 0 60px var(--neon-pink); }
+        }
+
+        @keyframes textGlowBlue {
+            0% { text-shadow: 0 0 20px var(--cyber-blue); }
+            100% { text-shadow: 0 0 40px var(--cyber-blue), 0 0 60px var(--neon-cyan); }
+        }
+
+         .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            border: 2px solid var(--cyber-red);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--cyber-red);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 100;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 0, 60, 0.4),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .back-button:hover {
+            background: var(--cyber-red);
+            color: black;
+            box-shadow: 0 0 15px var(--cyber-red),
+                        0 0 30px rgba(255, 0, 60, 0.5);
+            transform: scale(1.05);
+        }
+
+        .back-button:hover::before {
+            left: 100%;
+        }
+
+        .back-button i {
+            margin-right: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover i {
+            transform: translateX(-3px);
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--cyber-blue);
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px var(--cyber-blue);
+            letter-spacing: 2px;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+
+        
+        .content-section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--cyber-blue);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 15px var(--cyber-blue);
+            position: relative;
+            display: inline-block;
+            padding: 0 1rem;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 2px;
+            background: var(--cyber-blue);
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+        .section-title::before {
+            left: -60px;
+        }
+
+        .section-title::after {
+            right: -60px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .grid-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid var(--cyber-blue);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            transition: all 0.3s ease;
+            height: 350px;
+            perspective: 1000px;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+            border-color: var(--cyber-red);
+        }
+
+        .item-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .grid-item:hover .item-inner {
+            transform: rotateY(180deg);
+        }
+
+        .item-front, .item-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        .item-back {
+            transform: rotateY(180deg);
+            background: rgba(0, 0, 0, 0.9);
+            justify-content: space-around;
+        }
+
+        .item-image {
+            width: 100%;
+            height: 450px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .item-image i {
+            height: 550px;
+            font-size: 4rem;
+            color: var(--cyber-blue);
+            text-shadow: 0 0 15px var(--cyber-blue);
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-name {
+            font-size: 1.5rem;
+            color: var(--cyber-red);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px var(--cyber-red);
+        }
+
+        .item-rarity {
+            font-size: 0.9rem;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .rarity-elite {
+            background: rgba(0, 240, 255, 0.2);
+            color: var(--elite-color);
+            border: 1px solid var(--elite-color);
+            box-shadow: 0 0 10px var(--elite-color);
+        }
+
+        .rarity-mythic {
+            background: rgba(188, 19, 254, 0.2);
+            color: var(--mythic-color);
+            border: 1px solid var(--mythic-color);
+            box-shadow: 0 0 10px var(--mythic-color);
+        }
+
+        .rarity-legendary {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--legendary-color);
+            border: 1px solid var(--legendary-color);
+            box-shadow: 0 0 10px var(--legendary-color);
+        }
+
+        .item-description {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .item-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .stat {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid var(--cyber-blue);
+            font-size: 0.8rem;
+        }
+
+        .stat-value {
+            color: var(--cyber-blue);
+            font-weight: bold;
+        }
+
+        .locked-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .grid-item:hover .locked-overlay {
+            opacity: 1;
+        }
+
+        .lock-icon {
+            font-size: 3rem;
+            color: var(--neon-gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px var(--neon-gold);
+            animation: pulse 2s infinite;
+        }
+
+        .locked-text {
+            color: var(--neon-gold);
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px var(--neon-gold);
+        }
+
+        
+        .progress-container {
+            width: 100%;
+            height: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin: 2rem 0;
+            overflow: hidden;
+            border: 1px solid var(--cyber-blue);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(90deg, var(--cyber-red), var(--cyber-blue));
+            border-radius: 10px;
+            animation: progressGlow 2s infinite alternate, progressWidth 3s infinite alternate;
+        }
+
+        @keyframes progressGlow {
+            0% { box-shadow: 0 0 10px var(--cyber-red); }
+            100% { box-shadow: 0 0 20px var(--cyber-blue), 0 0 30px var(--cyber-red); }
+        }
+
+        @keyframes progressWidth {
+            0% { width: 75%; }
+            50% { width: 77%; }
+            100% { width: 75%; }
+        }
+
+        .progress-text {
+            color: var(--cyber-blue);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 5px var(--cyber-blue);
+        }
+
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--cyber-blue);
+            color: var(--cyber-blue);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--cyber-red), var(--cyber-blue));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: black;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+            
+        .footer {
+            margin-top: 3rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .security-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            margin: 0 10px;
+            border: 1px solid var(--cyber-blue);
+            border-radius: 20px;
+            color: var(--cyber-blue);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        
+        @media (max-width: 768px) {
+            .main-text {
+                font-size: 4rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .grid-item {
+                height: 320px;
+            }
+            
+            .item-name {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-title::before,
+            .section-title::after {
+                width: 30px;
+            }
+            
+            .section-title::before {
+                left: -40px;
+            }
+            
+            .section-title::after {
+                right: -40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-text {
+                font-size: 3rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .grid-item {
+                height: 300px;
+            }
+            
+            .section-title::before,
+            .section-title::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+ <a href="../pages/buy.nft/buy_nfts.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> BACK TO VAULT
+    </a>
+
+    <div class="matrix-overlay"></div>
+    
+    <div class="coming-soon-container">
+        <div class="logo-container">
+                
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNjAiIGZpbGw9IiMwMGEyZmYiIGZpbGwtb3BhY2l0eT0iMC4yIi8+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNDAiIHN0cm9rZT0iIzAwZjBmZiIgc3Ryb2tlLXdpZHRoPSI0Ii8+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iMjUiIHN0cm9rZT0iI2ZmMDAzYyIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHBhdGggZD0iTTQ1IDQ1TDc1IDc1IiBzdHJva2U9IiMwMGYwZmYiIHN0cm9rZS13aWR0aD0iNCIvPgogIDxwYXRoIGQ9IkQ0NSA3NUw3NSA0NSIgc3Ryb2tlPSIjMDBmMGZmIiBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+" alt="MetaRobo Logo" class="logo">
+        </div>
+        
+        <h1 class="main-text">
+            <span class="coming">COMING</span>
+            <span class="soon">SOON</span>
+        </h1>
+        
+        <p class="subtitle">PREPARE FOR THE ULTIMATE MECHA COMBAT EXPERIENCE</p>
+        
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+        <p class="progress-text">DEVELOPMENT PROGRESS: 75% COMPLETE</p>
+        
+            
+        <div class="content-section">
+            <h2 class="section-title">FIGHTERS AWAITING DEPLOYMENT IN S2</h2>
+            <div class="content-grid">
+                <div class="grid-item">
+                    <div class="item-inner">
+                        <div class="item-front">
+                            <div class="item-image">
+                                    
+                                <img src="../assets/images/elt/CYROS-SPECTER.jpg" alt="Cyber Hunter">
+                            </div>
+                            <h3 class="item-name">CYRO S-SPECTER</h3>
+                            <span class="item-rarity rarity-elite">ELITE</span>
+                            <p class="item-description">Stealth infiltration unit with advanced targeting systems</p>
+                        </div>
+                        <div class="item-back">
+                            <p class="item-description">Specializes in long-range combat and tactical evasion. Equipped with cloaking technology.</p>
+                            <div class="item-stats">
+                                <div class="stat"><span class="stat-value">85</span> Damage</div>
+                                <div class="stat"><span class="stat-value">60</span> Armor</div>
+                                <div class="stat"><span class="stat-value">90</span> Speed</div>
+                                <div class="stat"><span class="stat-value">75</span> Energy</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock lock-icon"></i>
+                        <p class="locked-text">LOCKED UNTIL MRFC S2</p>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="item-inner">
+                        <div class="item-front">
+                            <div class="item-image">
+                                
+                                <img src="../assets/images/myc/TITANFORGE.jpg" alt="Titan Forge">
+                            </div>
+                            <h3 class="item-name">TITAN FORGE</h3>
+                            <span class="item-rarity rarity-mythic">MYTHIC</span>
+                            <p class="item-description">Heavy assault mech with impenetrable armor</p>
+                        </div>
+                        <div class="item-back">
+                            <p class="item-description">Designed for frontline assaults. Can withstand massive damage while delivering powerful counterattacks.</p>
+                            <div class="item-stats">
+                                <div class="stat"><span class="stat-value">95</span> Damage</div>
+                                <div class="stat"><span class="stat-value">95</span> Armor</div>
+                                <div class="stat"><span class="stat-value">40</span> Speed</div>
+                                <div class="stat"><span class="stat-value">85</span> Energy</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock lock-icon"></i>
+                        <p class="locked-text">LOCKED UNTIL MRFC S2</p>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="item-inner">
+                        <div class="item-front">
+                            <div class="item-image">
+                                
+                                <img src="../assets/images/elt/NIMBUS X7.jpg" alt="Nimbus X7">
+                            </div>
+                            <h3 class="item-name">NIMBUS X7</h3>
+                            <span class="item-rarity rarity-elite">ELITE</span>
+                            <p class="item-description">Aerial combat specialist with hover technology</p>
+                        </div>
+                        <div class="item-back">
+                            <p class="item-description">Exceptional mobility with aerial superiority capabilities. Can attack from multiple angles.</p>
+                            <div class="item-stats">
+                                <div class="stat"><span class="stat-value">75</span> Damage</div>
+                                <div class="stat"><span class="stat-value">50</span> Armor</div>
+                                <div class="stat"><span class="stat-value">95</span> Speed</div>
+                                <div class="stat"><span class="stat-value">80</span> Energy</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock lock-icon"></i>
+                        <p class="locked-text">LOCKED UNTIL MRFC S2</p>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="item-inner">
+                        <div class="item-front">
+                            <div class="item-image">
+                                    
+                                <img src="../assets/images/ldg/VOLTSTRIKER.jpg" alt="Volt Striker">
+                            </div>
+                            <h3 class="item-name">VOLT STRIKER</h3>
+                            <span class="item-rarity rarity-legendary">LEGENDARY</span>
+                            <p class="item-description">Electrified combat unit with EMP capabilities</p>
+                        </div>
+                        <div class="item-back">
+                            <p class="item-description">Can disable enemy systems with EMP bursts while delivering high-voltage attacks.</p>
+                            <div class="item-stats">
+                                <div class="stat"><span class="stat-value">90</span> Damage</div>
+                                <div class="stat"><span class="stat-value">70</span> Armor</div>
+                                <div class="stat"><span class="stat-value">80</span> Speed</div>
+                                <div class="stat"><span class="stat-value">95</span> Energy</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock lock-icon"></i>
+                        <p class="locked-text">LOCKED UNTIL MRFC S2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            
+        <div class="content-section">
+            <h2 class="section-title">BATTLE ARENAS READY FOR COMBAT IN S2</h2>
+            <div class="content-grid">
+                <div class="grid-item">
+                    <div class="item-inner">
+                        <div class="item-front">
+                            <div class="item-image">
+                                    
+                                <img src="../assets/images/arena/VOLCANICRIFT.jpg" alt="Volcanic Rift">
+                            </div>
+                            <h3 class="item-name">VOLCANIC RIFT</h3>
+                            <span class="item-rarity rarity-elite">ELITE</span>
+                            <p class="item-description">Dangerous terrain with lava flows and unstable ground</p>
+                        </div>
+                        <div class="item-back">
+                            <p class="item-description">Environmental hazards include periodic eruptions and falling debris. High-risk, high-reward combat zone.</p>
+                            <div class="item-stats">
+                                <div class="stat"><span class="stat-value">Large</span> Size</div>
+                                <div class="stat"><span class="stat-value">High</span> Hazard</div>
+                                <div class="stat"><span class="stat-value">Damage+</span> Bonus</div>
+                                <div class="stat"><span class="stat-value">PvP</span> Mode</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock lock-icon"></i>
+                        <p class="locked-text">LOCKED UNTIL MRFC S2</p>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="item-inner">
+                        <div class="item-front">
+                            <div class="item-image">
+                                
+                                <img src="../assets/images/arena/NEONMETROPOLIS.jpg" alt="Neon Metropolis">
+                            </div>
+                            <h3 class="item-name">NEON METROPOLIS</h3>
+                            <span class="item-rarity rarity-mythic">MYTHIC</span>
+                            <p class="item-description">Urban combat zone with verticality and cover opportunities</p>
+                        </div>
+                        <div class="item-back">
+                            <p class="item-description">Dense cityscape with destructible elements and multiple elevation levels for tactical advantage.</p>
+                            <div class="item-stats">
+                                <div class="stat"><span class="stat-value">Medium</span> Size</div>
+                                <div class="stat"><span class="stat-value">Medium</span> Hazard</div>
+                                <div class="stat"><span class="stat-value">Tactical+</span> Bonus</div>
+                                <div class="stat"><span class="stat-value">PvP</span> Mode</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock lock-icon"></i>
+                        <p class="locked-text">LOCKED UNTIL MRFC S2</p>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="item-inner">
+                        <div class="item-front">
+                            <div class="item-image">
+                                
+                                <img src="../assets/images/arena/ORBITALSTATION.jpg" alt="Orbital Station">
+                            </div>
+                            <h3 class="item-name">ORBITAL STATION</h3>
+                            <span class="item-rarity rarity-legendary">LEGENDARY</span>
+                            <p class="item-description">Zero-g combat environment with unique physics</p>
+                        </div>
+                        <div class="item-back">
+                            <p class="item-description">Low-gravity arena where attacks have different trajectories and movement is significantly altered.</p>
+                            <div class="item-stats">
+                                <div class="stat"><span class="stat-value">Large</span> Size</div>
+                                <div class="stat"><span class="stat-value">Medium</span> Hazard</div>
+                                <div class="stat"><span class="stat-value">Mobility+</span> Bonus</div>
+                                <div class="stat"><span class="stat-value">PvE/PvP</span> Mode</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock lock-icon"></i>
+                        <p class="locked-text">LOCKED UNTIL MRFC S2</p>
+                    </div>
+                </div>
+                
+                <div class="grid-item">
+                    <div class="item-inner">
+                        <div class="item-front">
+                            <div class="item-image">
+                                    
+                                <img src="../assets/images/arena/BIO-DOME.jpg" alt="Bio-Dome">
+                            </div>
+                            <h3 class="item-name">BIO-DOME</h3>
+                            <span class="item-rarity rarity-elite">ELITE</span>
+                            <p class="item-description">Overgrown research facility with interactive flora</p>
+                        </div>
+                        <div class="item-back">
+                            <p class="item-description">Some plant life can be used for healing or offensive advantages, creating dynamic combat scenarios.</p>
+                            <div class="item-stats">
+                                <div class="stat"><span class="stat-value">Medium</span> Size</div>
+                                <div class="stat"><span class="stat-value">Low</span> Hazard</div>
+                                <div class="stat"><span class="stat-value">Healing+</span> Bonus</div>
+                                <div class="stat"><span class="stat-value">PvE</span> Mode</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="locked-overlay">
+                        <i class="fas fa-lock lock-icon"></i>
+                        <p class="locked-text">LOCKED UNTIL MRFC S2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://x.com/metarobofc?s=21" class="social-link">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://discord.gg/AUdC98dwPN" class="social-link">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://coinmarketcap.com/currencies/ethereum/" class="social-link">
+                <i class="fab fa-ethereum"></i>
+            </a>
+        </div>
+        
+        <div class="footer">
+            <span class="security-badge">256-BIT QUANTUM ENCRYPTION</span>
+            <span class="security-badge">ETHEREUM BLOCKCHAIN VERIFIED</span>
+            <p>© 2025 MetaRobo Fight Club. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+            
+        document.querySelectorAll('.grid-item').forEach((item, index) => {
+            item.style.animation = `float ${6 + index * 0.5}s ease-in-out infinite`;
+            item.style.animationDelay = `${index * 0.3}s`;
+        });
+    </script>
+</body>
+</html>

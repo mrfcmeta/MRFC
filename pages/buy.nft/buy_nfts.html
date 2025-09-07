@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaRobo Buy NFT - Lite Mode</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-cyan: #00ffe7;
+            --neon-purple: #bc13fe;
+            --neon-pink: #ff2a6d;
+            --neon-yellow: #f5d300;
+            --neon-gold: #ffd700;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --card-bg: rgba(15, 15, 15, 0.8);
+            --glow-cyan: 0 0 15px var(--极 neon-cyan);
+            --glow-purple: 0 0 15px var(--neon-purple);
+            --glow-pink: 0 0 15px var(--neon-pink);
+            --glow-yellow: 0 0 15px var(--neon-yellow);
+            --glow-gold: 0 0 15px var(--neon-gold);
+            --text-glow: 0 0 8px rgba(245, 211, 0, 0.7);
+            --cyber-red: #ff003c;
+            --cyber-blue: #00f0ff;
+            --elite-color: #00f0ff;
+            --mythic-color: #bc13fe;
+            --legendary-color: #ffd700;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+            
+        .lite-mode-banner {
+            background: linear-gradient(90deg, var(--cyber-red), var(--cyber-blue));
+            color: black;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.5);
+            position: relative;
+            z-index: 101;
+        }
+        
+        .cyber-header {
+            background: linear-gradient(135deg, #0f0f15 0%, #1a1a2e 100%);
+            padding: 1.5rem 0;
+            border-bottom: 3px solid var(--cyber-red);
+            box-shadow: 0 0 30px rgba(255, 0, 60, 0.3);
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-left: 60px;
+        }
+
+        .logo {
+            width: 60px;
+            height: auto;
+            filter: drop-shadow(0 0 10px var(--cyber-blue));
+        }
+
+        .header-title {
+            font-size: 2rem;
+            background: linear-gradient(90deg, var(--cyber-blue), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 极 0 0 15px rgba(0, 240, 255, 0.5);
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .header-subtitle {
+            font-size: 0.9rem;
+            color: var(--cyber-red);
+            letter-spacing: 3px;
+            margin-top: 0.3rem;
+            text-shadow: 0 0 10px var(--cyber-red);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--cyber-blue);
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cyber-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+            
+        .matrix-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+            animation: matrixMove 100s linear infinite;
+        }
+
+        @keyframes matrix极 Move {
+            0% { background-position: 0 极 0; }
+            100% { background-position: 1000px 1000px; }
+        }
+
+            
+        .back-button {
+            position: fixed;
+            top: 60px;
+            left: 20px;
+            padding: 10px 20px;
+            border: 2px solid var(--cyber-red);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--cyber-red);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            z-index: 100;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 0, 60, 0.3);
+        }
+
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 0, 60, 0.4),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .back-button:hover {
+            background: var(--cyber-red);
+            color: black;
+            box-shadow: 0 0 15px var(--cyber-red),
+                        0 0 30px rgba(255, 0, 60, 0.5);
+            transform: scale(1.05);
+        }
+
+        .back-button:hover::before {
+            left: 100%;
+        }
+
+        .back-button i {
+            margin-right: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover i {
+            transform: translateX(-3px);
+        }
+
+            
+        .mint-container {
+            max-width: 1800px;
+            margin: 2rem auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        
+        .filter-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 2rem auto;
+            max-width: 800px;
+            justify-content: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-title {
+            color: var(--cyber-blue);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-button {
+            padding: 6px 12px;
+            border: 1px solid var(--cyber-blue);
+            border-radius: 20px;
+            background: transparent;
+            color: var(--cyber-blue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .filter-button.active {
+            background: var(--cyber-blue);
+            color: black;
+            font-weight: bold;
+            box-shadow: 0 0 10px var(--cyber-blue);
+        }
+
+        .filter-button:hover:not(.active) {
+            background: rgba(0, 240, 255, 0.2);
+        }
+
+        .filter-button.rarity-elite {
+            border-color: var(--elite-color);
+            color: var(--elite-color);
+        }
+
+        .filter-button.rarity-elite.active {
+            background: var(--elite-color);
+            color: black;
+            box-shadow: 0 0 10px var(--elite-color);
+        }
+
+        .filter-button.rarity-myth极 ic {
+            border-color: var(--mythic-color);
+            color: var(--mythic-color);
+        }
+
+        .filter-button.rarity-mythic.active {
+            background: var(--my极 thic-color);
+            color: white;
+            box-shadow: 0 0 10px var(--mythic-color);
+        }
+
+        .filter-button.rarity-legendary {
+            border-color: var(--legendary-color);
+            color: var(--legendary-color);
+        }
+
+        .filter-button.rarity-legendary.active {
+            background: var(--legendary-color);
+            color: black;
+            box-shadow: 0 0 10px var(--legendary-color);
+        }
+
+        
+        .search-container {
+            margin: 2rem auto;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--cyber-blue);
+            border-radius: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+
+        .search-bar::placeholder {
+            color: #666;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--cyber-blue);
+        }
+
+            
+        .fighters-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 1800px) {
+            .fighters-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .fighters-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .fighters-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .fighter-card {
+            border-radius: 12px;
+            padding: 12px;
+            background: var(--card-bg);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            overflow: hidden;
+            border: 1px solid rgba(0, 240, 255, 0.1);
+            box-shadow: 0 5极 px 15px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .fighter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyber-red), var(--cyber-blue));
+        }
+
+        .fighter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            border-color: var(--cyber-blue);
+        }
+
+        .fighter-content {
+            position: relative;
+            z-index: 2;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .fighter-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .fighter-card:hover .fighter-image {
+            border-color: var(--cyber-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 极 0.5);
+        }
+
+        .fighter-name {
+            font-size: 1rem;
+            margin: 0.3rem 0;
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+        }
+
+        .fighter-stats {
+            margin: 8px 0;
+        }
+
+        .power-bar-container {
+            margin: 0.3rem 0;
+        }
+
+        .power-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3px;
+            font-size: 0.7rem;
+        }
+
+        .power-text {
+            color: var(--cyber-blue);
+        }
+
+        .stat-bar {
+            height: 4px;
+            background: rgba(0, 240, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .stat-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cyber-red), var(--cyber-blue));
+            border-radius: 2px;
+        }
+
+            
+        .price-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        .eth-price {
+            color: var(--cyber-blue);
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .usd-price {
+            color: #aaa;
+            font-size: 0.7rem;
+        }
+
+        .fighter-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+            gap: 5px;
+            position: relative;
+        }
+
+            
+        .like-button {
+            background: transparent;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .like-button.active {
+            color: var(--cyber-red);
+        }
+
+        .like-button:hover {
+            color: var(--cyber-red);
+            transform: scale(1.1);
+        }
+
+            
+        .buy-button, .view-button {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            padding: 6px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            margin-top: 15px;
+        }
+        
+        .buy-button {
+            border: none;
+            border-radius: 4px;
+            background: linear-gradient(45deg, var(--cyber-red), var(--cyber-blue));
+            color: black;
+        }
+        
+        .view-button {
+            border: 1px solid var(--cyber-blue);
+            border-radius: 4px;
+            background: transparent;
+            color: var(--cyber-blue);
+        }
+        
+        .view-button:hover {
+            background: var(--cyber-blue);
+            color: black;
+        }
+
+        
+        .rarity-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 3;
+        }
+
+        .rarity-elite {
+            background-color: var(--elite-color);
+            color: black;
+            box-shadow: 0 0 10px var(--elite-color);
+        }
+
+        .rarity-mythic {
+            background-color: var(--mythic-color);
+            color: white;
+            box-shadow: 0 0 10px var(--mythic-color);
+        }
+
+        .rarity-legendary {
+            background-color: var(--legendary-color);
+            color: black;
+            box-shadow: 0 0 10px var(--legendary-color);
+        }
+
+            
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3rem 0;
+            gap: 10px;
+        }
+
+        .page-button {
+            padding: 8px 15px;
+            border: 1px solid var(--cyber-blue);
+            border-radius: 6px;
+            background: transparent;
+            color: var(--cyber-blue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .page-button.active {
+            background: var(--cyber-blue);
+            color: black;
+            box-shadow: 0 0 15px var(--cyber-blue);
+            font-weight: bold;
+        }
+
+        .page-button:hover:not(.active) {
+            background: rgba(0, 240, 255, 0.2);
+        }
+
+        .pagination-nav {
+            display: flex;
+            gap: 10px;
+            margin: 0 15px;
+        }
+
+        .pagination-prev-next {
+            padding: 8px 15px;
+            border: 1px solid var(--cyber-blue);
+            border-radius: 6px;
+            background: transparent;
+            color: var(--cyber-blue);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .pagination-prev-next:hover {
+            background: rgba(0, 240, 255, 0.2);
+        }
+
+        .pagination-prev-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+           
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .security-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            margin: 0 10px;
+            border: 1px solid var(--cyber-blue);
+            border-radius: 20px;
+            color: var(--cyber-blue);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-bottom {
+            margin-top: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: var(--cyber-blue);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--neon-cyan);
+            transform: translateY(-3px);
+        }
+
+        
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 150%; }
+        }
+
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .header-nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .logo-container {
+                margin-left: 0;
+            }
+            
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                margin-bottom: 1rem;
+            }
+            
+            .fighters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pagination {
+                flex-wrap: wrap;
+            }
+
+            .filter-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--cyber-red), var(--cyber-blue));
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="lite-mode-banner">
+        LITE MODE - 6 FIGHTERS AVAILABLE
+    </div>
+    <a href="../../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> BACK
+    </a>
+    
+    <div class="matrix-overlay"></div>
+    
+   
+    <header class="cyber-header">
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="../../assets/images/METAROBOFC.LOGO.jpeg" alt="MetaRobo Logo" class="logo">
+                <div>
+                    <div class="header-title">METAROBO FIGHT CLUB</div>
+                    <div class="header-subtitle">MECHA WARRIOR VAULT</div>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="../../header_nav/arena.html" class="nav-link">ARENA</a>
+                <a href="../../header_nav/rarities.html" class="nav-link">RAITIES</a>
+                <a href="../../fighter-pagination/0.1.html" class="nav-link">MECHA FIGHTER VAULT</a>
+                
+            </nav>
+        </div>
+    </header>
+
+    <div class="mint-container">
+        
+        <div class="filter-section">
+            <div class="filter-group">
+                <div class="filter-title">FILTER BY RARITY</div>
+                <div class="filter-buttons">
+                    <button class="filter-button rarity-elite" data-rarity="elite">ELITE</button>
+                    <button class="filter-button rarity-mythic" data-rarity="mythic">MYTHIC</button>
+                    <button class="filter-button rarity-legendary" data-rarity="legendary">LEGENDARY</button>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <div class="filter-title">FILTER BY POWER</div>
+                <div class="filter-buttons">
+                    <button class="filter-button" data-power="80">80+</button>
+                    <button class="filter-button" data-power="89">89+</button>
+                    <button class="filter-button" data-power="90">90+</button>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <div class="filter-title">RESET FILTERS</div>
+                <button class="filter-button" id="reset-filters">RESET ALL</button>
+            </div>
+        </div>
+
+     
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="SEARCH WARRIORS...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <div class="fighters-grid">
+                
+            <div class="fighter-card" data-rarity="elite" data-power="85">
+                <div class="rarity-badge rarity-elite">ELT</div>
+                <img src="../../assets/images/elt/iron.vortex.jpeg" alt="IV" class="fighter-image">
+                <h3 class="fighter-name">IRON VORTEX NFT</h3>
+                <div class="fighter-stats">
+                    <div class="power-bar-container">
+                        <div class="power-label">
+                            <span class="power-text">COMBAT POWER</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-display">
+                    <div class="eth-price">0.21 ETH</div>
+                    <div class="usd-price">$500.00</div>
+                </div>
+                <div class="fighter-actions">
+                    <button class="like-button"><i class="far fa-heart"></i></button>
+                    <a href="../../purchase.nft/1.buy.nft$.html" class="buy-button">BUY NFT</a>
+                    <a href="../../view/view1.html" class="view-button">VIEW</a>
+                </div>
+            </div>
+
+          
+            <div class="fighter-card" data-rarity="elite" data-power="84">
+                <div class="rarity-badge rarity-elite">ELT</div>
+                <img src="../../assets/images/elt/CHAOS JAGGERNAUT.jpeg" alt="CJ" class="fighter-image">
+                <h3 class="fighter-name">CHAOS JAGGERNAUT NFT</h3>
+                <div class="fighter-stats">
+                    <div class="power-bar-container">
+                        <div class="power-label">
+                            <span class="power-text">COMBAT POWER</span>
+                            <span>84%</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 84%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-display">
+                    <div class="eth-price">0.21 ETH</div>
+                    <div class="usd-price">$500.00</div>
+                </div>
+                <div class="fighter-actions">
+                    <button class="like-button"><i class="far fa-heart"></i></button>
+                    <a href="../../purchase.nft/4.buy.nft.html" class="buy-button">BUY NFT</a>
+                    <a href="../../view/view1.html" class="view-button">VIEW</a>
+                </div>
+            </div>
+
+            
+            <div class="fighter-card" data-rarity="mythic" data-power="92">
+                <div class="rarity-badge rarity-mythic">MYC</div>
+                <img src="../../assets/images/myc/xo_phantom.jpeg" alt="XP" class="fighter-image">
+                <h3 class="fighter-name">XO PHANTOM NFT</h3>
+                <div class="fighter-stats">
+                    <div class="power-bar-container">
+                        <div class="power-label">
+                            <span class="power-text">COMBAT POWER</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 92%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-display">
+                    <div class="eth-price">0.42 ETH</div>
+                    <div class="usd-price">$1000.00</div>
+                </div>
+                <div class="fighter-actions">
+                    <button class="like-button"><i class="far fa-heart"></i></button>
+                    <a href="../../purchase.nft/2.buy.nft$.html" class="buy-button">BUY NFT</a>
+                    <a href="../../view/view1.html" class="view-button">VIEW</a>
+                </div>
+            </div>
+
+         
+            <div class="fighter-card" data-rarity="mythic" data-power="89">
+                <div class="rarity-badge rarity-mythic">MYC</div>
+                <img src="../../assets/images/myc/stealt.assasin.jpeg" alt="SA" class="fighter-image">
+                <h3 class="fighter-name">STEALTH ASSASSIN NFT</h3>
+                <div class="fighter-stats">
+                    <div class="power-bar-container">
+                        <div class="power-label">
+                            <span class="power-text">COMBAT POWER</span>
+                            <span>89%</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 89%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-display">
+                    <div class="eth-price">0.42 ETH</div>
+                    <div class="usd-price">$1000.00</div>
+                </div>
+                <div class="fighter-actions">
+                    <button class="like-button"><i class="far fa-heart"></i></button>
+                    <a href="../../purchase.nft/5.buy.nft.html" class="buy-button">BUY NFT</a>
+                    <a href="../../view/view1.html" class="view-button">VIEW</a>
+                </div>
+            </div>
+
+           
+            <div class="fighter-card" data-rarity="legendary" data-power="98">
+                <div class="rarity-badge rarity-legendary">LDG</div>
+                <img src="../../assets/images/ldg/blaze_gurdian.jpeg" alt="BG" class="fighter-image">
+                <h3 class="fighter-name">BLAZE GUARDIAN NFT</h3>
+                <div class="fighter-stats">
+                    <div class="power-bar-container">
+                        <div class="power-label">
+                            <span class="power-text">COMBAT POWER</span>
+                            <span>98%</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 98%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-display">
+                    <div class="eth-price">0.63 ETH</div>
+                    <div class="usd-price">$1500.00</div>
+                </div>
+                <div class="fighter-actions">
+                    <button class="like-button"><i class="far fa-heart"></i></button>
+                    <a href="../../purchase.nft/3.buy.nft.html" class="buy-button">BUY NFT</a>
+                    <a href="../../view/view1.html" class="view-button">VIEW</a>
+                </div>
+            </div>
+
+           
+            <div class="fighter-card" data-rarity="legendary" data-power="98">
+                <div class="rarity-badge rarity-legendary">LDG</div>
+                <img src="../../assets/images/ldg/cosmic_shogun.webp.jpeg" alt="CS" class="fighter-image">
+                <h3 class="fighter-name">COSMIC SHOGUN NFT</h3>
+                <div class="fighter-stats">
+                    <div class="power-bar-container">
+                        <div class="power-label">
+                            <span class="power-text">COMBAT POWER</span>
+                            <span>98%</span>
+                        </div>
+                        <div class="stat-bar">
+                            <div class="stat-fill" style="width: 98%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-display">
+                    <div class="eth-price">0.63 ETH</div>
+                    <div class="usd-price">$1500.00</div>
+                </div>
+                <div class="fighter-actions">
+                    <button class="like-button"><i class="far fa-heart"></i></button>
+                    <a href="../../purchase.nft/6.buy.nft.html" class="buy-button">BUY NFT</a>
+                    <a href="../../view/view1.html" class="view-button">VIEW</a>
+                </div>
+            </div>
+        </div>
+        
+       
+        
+    <footer>
+        <div>
+            <span class="security-badge">256-BIT QUANTUM ENCRYPTION</span>
+            <span class="security-badge">ETHEREUM BLOCKCHAIN VERIFIED</span>
+        </div>
+        <div class="social-links">
+            <a href="https://x.com/metarobofc?s=21"><i class="fab fa-twitter"></i></a>
+            <a href="https://discord.gg/FwUFGDYM"><i class="fab fa-discord"></i></a>
+            <a href="https://coinmarketcap.com/currencies/ethereum/"><i class="fab fa-ethereum"></i></a>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 MetaRobo Fight Club. All rights reserved.</p>
+            <p>All transactions secured by ROBO Network</p>
+        </div>
+    </footer>
+
+    <script>
+      
+        document.querySelectorAll('.like-button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const icon = this.querySelector('i');
+                if (this.classList.contains('active')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                } else {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                }
+            });
+        });
+
+        
+        const searchBar = document.querySelector('.search-bar');
+        searchBar.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            filterFighters();
+        });
+
+            
+        let activeRarityFilter = null;
+        let activePowerFilter = null;
+
+        document.querySelectorAll('.filter-button[data-rarity]').forEach(button => {
+            button.addEventListener('click', function() {
+                    
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                    activeRarityFilter = null;
+                } else {
+                    
+                    document.querySelectorAll('.filter-button[data-rarity]').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                        
+                    this.classList.add('active');
+                    activeRarityFilter = this.getAttribute('data-rarity');
+                }
+                filterFighters();
+            });
+        });
+
+        document.querySelectorAll('.filter-button[data-power]').forEach(button => {
+            button.addEventListener('click', function() {
+                
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
+                    activePowerFilter = null;
+                } else {
+                        
+                    document.querySelectorAll('.filter-button[data-power]').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    this.classList.add('active');
+                    activePowerFilter = parseInt(this.getAttribute('data-power'));
+                }
+                filterFighters();
+            });
+        });
+
+        
+        document.getElementById('reset-filters').addEventListener('click', function() {
+            
+            document.querySelectorAll('.filter-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            activeRarityFilter = null;
+            activePowerFilter = null;
+            
+                
+            searchBar.value = '';
+            
+            filterFighters();
+        });
+
+        
+        function filterFighters() {
+            const searchTerm = searchBar.value.toLowerCase();
+            
+            document.querySelectorAll('.fighter-card').forEach(card => {
+                const name = card.querySelector('.fighter-name').textContent.toLowerCase();
+                const rarity = card.getAttribute('data-rarity');
+                const power = parseInt(card.getAttribute('data-power'));
+                
+                    
+                const matchesSearch = name.includes(searchTerm) || searchTerm === '';
+                
+                    
+                const matchesRarity = activeRarityFilter === null || rarity === activeRarityFilter;
+                
+                
+                const matchesPower = activePowerFilter === null || power >= activePowerFilter;
+                
+                    
+                if (matchesSearch && matchesRarity && matchesPower) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        
+        document.querySelectorAll('.buy-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const fighterName = this.closest('.fighter-card').querySelector('.fighter-name').textContent;
+                alert(`You are about to purchase ${fighterName}!`);
+                    
+            });
+        });
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const pageLinks = document.querySelectorAll('.page-button');
+            
+            pageLinks.forEach(link => {
+                const linkPage = link.getAttribute('href').split('/').pop();
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
